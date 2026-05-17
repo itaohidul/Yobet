@@ -103,23 +103,31 @@ export function Navbar() {
       </header>
 
       {/* Bottom Navigation - Fixed on Mobile, Hidden on Desktop */}
-      <nav className="md:hidden nav-bottom px-2">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 glass border-t border-white/[0.05] pb-safe">
         <div className="flex items-center justify-around h-16">
           {BOTTOM_NAV_LINKS.map((link) => {
             const Icon = link.icon;
             const isActive = location.pathname === link.path;
+            const isMe = link.name === "Me";
+            
             return (
               <Link
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "flex flex-col items-center justify-center w-full h-full gap-1 transition-all",
+                  "flex flex-col items-center justify-center w-full h-full gap-1 transition-all relative",
                   isActive ? "text-primary" : "text-white/40"
                 )}
               >
+                {isActive && (
+                  <motion.div 
+                    layoutId="nav-active"
+                    className="absolute -top-1 w-8 h-1 bg-primary rounded-full shadow-[0_0_10px_rgba(143,52,255,0.5)]"
+                  />
+                )}
                 <div className={cn(
                   "p-1.5 rounded-xl transition-all",
-                  isActive && "bg-primary/10 shadow-[0_0_20px_rgba(143,52,255,0.2)]"
+                  isActive && "bg-primary/10"
                 )}>
                   <Icon size={20} strokeWidth={isActive ? 2.5 : 2} />
                 </div>

@@ -71,14 +71,14 @@ export function TasksView() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden pb-32">
       {/* Top Banner Section */}
-      <div className="relative h-[420px] w-full overflow-hidden">
+      <div className="relative h-[320px] md:h-[480px] w-full overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black z-10" />
         <div className="absolute inset-0 flex items-center justify-center">
            {/* Trophy Graphic Container */}
-           <div className="relative w-full h-full flex items-center justify-center scale-110">
-              <div className="absolute w-[300px] h-[300px] bg-[#00FF00]/20 blur-[100px] rounded-full" />
+           <div className="relative w-full h-full flex items-center justify-center scale-90 md:scale-100">
+              <div className="absolute w-[200px] md:w-[400px] h-[200px] md:h-[400px] bg-[#00FF00]/10 blur-[100px] rounded-full" />
               <div className="relative z-20 flex flex-col items-center">
                  <motion.div
                    initial={{ y: 20, opacity: 0 }}
@@ -86,18 +86,18 @@ export function TasksView() {
                    transition={{ duration: 1 }}
                    className="relative"
                  >
-                   <Trophy size={160} className="text-[#D4AF37] drop-shadow-[0_0_30px_rgba(212,175,55,0.5)]" />
-                   <div className="absolute -top-4 -right-4 w-12 h-12 bg-black border-2 border-[#D4AF37] rounded-lg flex items-center justify-center font-display font-black text-xs rotate-12">YO</div>
+                   <Trophy size={140} className="md:size-[180px] text-[#D4AF37] drop-shadow-[0_0_30px_rgba(212,175,55,0.4)]" />
+                   <div className="absolute -top-4 -right-4 w-10 md:w-14 h-10 md:h-14 bg-black border-2 border-[#D4AF37] rounded-xl flex items-center justify-center font-display font-black text-[10px] md:text-sm rotate-12 shadow-2xl">YO</div>
                  </motion.div>
                  
                  <div className="mt-8 text-center px-4">
-                    <h1 className="text-5xl md:text-6xl font-display font-black uppercase italic tracking-tighter leading-none">
+                    <h1 className="text-4xl md:text-7xl font-display font-black uppercase italic tracking-tighter leading-none">
                       YoPoker
                     </h1>
-                    <div className="text-3xl md:text-4xl font-display font-black uppercase italic tracking-tighter text-white mt-1">
+                    <div className="text-2xl md:text-5xl font-display font-black uppercase italic tracking-tighter text-white mt-1">
                       Friendship Series
                     </div>
-                    <p className="text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] mt-3">
+                    <p className="text-white/60 text-[8px] md:text-sm font-bold uppercase tracking-[0.3em] mt-4">
                       Free Entry • Share <span className="text-[#D4AF37]">$10,000</span> Pool + Bug Bounty
                     </p>
                  </div>
@@ -107,11 +107,14 @@ export function TasksView() {
       </div>
 
       {/* Back Button */}
-      <Link to="/" className="fixed top-6 left-6 z-50 flex items-center gap-2 text-white/60 hover:text-white transition-colors bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 uppercase font-black text-[10px] tracking-widest">
+      <Link to="/" className="fixed top-6 left-6 z-50 flex items-center gap-2 text-white/60 hover:text-white transition-colors bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 uppercase font-black text-[10px] tracking-widest hidden md:flex">
         <ChevronLeft size={16} /> Return
       </Link>
+      <Link to="/" className="fixed top-4 left-4 z-50 md:hidden bg-black/60 p-2 rounded-full border border-white/10 text-white leading-none">
+        <ChevronLeft size={20} />
+      </Link>
 
-      <div className="px-4 max-w-xl mx-auto -mt-12 relative z-20 space-y-8">
+      <div className="px-4 max-w-2xl mx-auto -mt-8 md:-mt-16 relative z-20 space-y-10">
         {/* Main Stats */}
         <div className="grid grid-cols-2 gap-4">
           <div className="glass p-6 rounded-[32px] text-center border-white/5 bg-white/[0.02]">
@@ -208,9 +211,9 @@ export function TasksView() {
                 
                 <div className="flex items-center gap-4">
                   <div className="flex flex-col items-center gap-1">
-                    <div className="flex items-center gap-1 h-5 px-1.5 bg-[#00FF00]/10 flex items-center justify-center rounded">
-                      <Ticket size={10} className="text-[#00FF00]" />
-                      <span className="text-[9px] font-black text-[#00FF00]">REWARD +{task.reward}</span>
+                    <div className="flex items-center gap-1.5 h-6 px-2.5 bg-[#00FF00]/10 rounded border border-[#00FF00]/10">
+                      <Ticket size={12} className="text-[#00FF00]" />
+                      <span className="text-[10px] font-black text-[#00FF00] whitespace-nowrap">REWARD +{task.reward}</span>
                     </div>
                   </div>
                   {task.completed ? (

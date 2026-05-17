@@ -31,6 +31,20 @@
   .safe-bottom {
     padding-bottom: max(env(safe-area-inset-bottom), 1rem);
   }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+.glass {
+  @apply bg-white/[0.03] backdrop-blur-xl border border-white/5;
+}
+
+.premium-gradient {
+  background: linear-gradient(135deg, #8f34ff 0%, #ff348f 100%);
 }
 
 @keyframes shimmer {
