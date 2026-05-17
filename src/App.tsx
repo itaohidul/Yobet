@@ -54,11 +54,11 @@ export default function App() {
   return (
     <AuthProvider>
       <Router>
-        <div className="min-h-screen bg-black overflow-x-hidden selection:bg-gold/30 selection:text-gold">
+        <div className="min-h-screen bg-black overflow-x-hidden selection:bg-primary/30 selection:text-white pb-safe">
           <Navbar />
           <AuthModal />
           
-          <main>
+          <main className="relative overflow-x-hidden">
             <AnimatePresence mode="wait">
               <Routes>
                 <Route path="/" element={<HomeView />} />

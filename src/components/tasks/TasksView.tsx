@@ -166,18 +166,18 @@ export function TasksView() {
           <div className="text-center">
             <h2 className="text-[#00FF00] text-sm font-black uppercase tracking-[0.3em]">How to Join</h2>
           </div>
-          <div className="flex items-start justify-between relative px-4">
-             {/* Connecting Arrows (Approximate) */}
-             <div className="absolute top-5 left-1/3 right-1/3 h-px border-t border-white/10 border-dashed" />
+          <div className="flex items-start justify-between relative px-2 md:px-4">
+             {/* Connecting Lines */}
+             <div className="absolute top-5 left-1/4 right-1/4 h-px border-t border-white/20 border-dashed z-0" />
              {[
                { step: 1, title: "Register", desc: "Create YoPoker account" },
                { step: 2, title: "Get Ticket", desc: "Complete tasks below" },
                { step: 3, title: "Sign Up", desc: "Register at 14:00" }
              ].map((item, i) => (
                <div key={i} className="flex flex-col items-center gap-3 relative z-10 w-1/3">
-                 <div className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center font-black italic">{item.step}</div>
-                 <div className="text-center">
-                    <div className="text-[10px] font-black uppercase text-white/90">{item.title}</div>
+                 <div className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center font-black italic shadow-[0_0_15px_rgba(255,255,255,0.3)]">{item.step}</div>
+                 <div className="text-center px-1">
+                    <div className="text-[10px] font-black uppercase text-white/90 whitespace-nowrap">{item.title}</div>
                     <div className="text-[8px] font-bold uppercase text-white/40 mt-1 leading-tight">{item.desc}</div>
                  </div>
                </div>
@@ -260,7 +260,7 @@ export function TasksView() {
              <div className="text-[10px] font-black text-white/40 uppercase tracking-widest">My Ticket Amount:</div>
              <div className="flex items-center gap-2">
                 <Ticket size={24} className="text-[#00FF00]" />
-                <span className="text-xl font-display font-black text-white italic">{user.tickets || 0}</span>
+                <span className="text-xl font-display font-black text-white italic">{user?.tickets || 0}</span>
                 <span className="text-[10px] font-black text-white/40 uppercase tracking-widest ml-1">TICKET</span>
              </div>
           </div>
