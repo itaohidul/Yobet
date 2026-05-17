@@ -1,8 +1,9 @@
 import { motion } from "motion/react";
 import { Play, Users, Trophy, Star, Filter, Search, ShieldCheck, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import React, { useState } from "react";
 import { cn } from "@/src/lib/utils";
+import { useAuth } from "@/src/lib/AuthContext";
 
 const GAME_TYPES = ["All", "Texas", "Omaha", "Tourney", "Sit & Go", "Blitz"];
 
@@ -17,14 +18,22 @@ const GAMES = [
 
 export function GamesView() {
   const [activeTab, setActiveTab] = useState("All");
+  const { user, setShowAuthModal } = useAuth();
+
+  const handleGameAction = (e: React.MouseEvent) => {
+    if (!user) {
+      e.preventDefault();
+      setShowAuthModal(true);
+    }
+  };
 
   return (
-    <div className="pt-20 pb-24 md:pt-24 px-4 max-w-7xl mx-auto space-y-6">
-      {/* Banner Area */}
+    <div className="pt-20 pb-24 md:pt-28 px-3 md:px-6 max-w-7xl mx-auto space-y-6 safe-bottom">
+      {/* Banner Area - Adjust height for small devices */}
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="w-full h-40 md:h-64 rounded-3xl overflow-hidden relative group cursor-pointer"
+        className="w-full h-44 md:h-64 rounded-3xl overflow-hidden relative group cursor-pointer"
       >
         <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent z-10" />
         <img 
@@ -37,7 +46,11 @@ export function GamesView() {
             WEEKEND <br /> <span className="text-white">MEGA SERIES</span>
           </h2>
           <div className="text-sm md:text-xl font-bold primary-gradient uppercase">$2,500,000 GUARANTEED</div>
-          <Link to="/lobby" className="mt-4 md:mt-6 px-6 py-2 bg-white text-black text-[10px] font-black uppercase tracking-widest rounded-full w-fit hover:scale-105 transition-all flex items-center justify-center">
+          <Link 
+            to="/lobby" 
+            onClick={handleGameAction}
+            className="mt-4 md:mt-6 px-6 py-2 bg-white text-black text-[10px] font-black uppercase tracking-widest rounded-full w-fit hover:scale-105 transition-all flex items-center justify-center"
+          >
             View Tournaments
           </Link>
         </div>
@@ -93,7 +106,11 @@ export function GamesView() {
                 <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest">MIN BUY-IN</div>
                 <div className="text-xs font-mono font-bold text-white/60">{game.minBuy}</div>
               </div>
-              <Link to={game.type === "Tourney" ? "/lobby" : "/games"} className="w-12 h-12 md:w-auto md:px-8 bg-white/5 hover:bg-primary rounded-2xl flex items-center justify-center gap-2 transition-all border border-white/5 group/btn">
+              <Link 
+                to={game.type === "Tourney" ? "/lobby" : "/games"} 
+                onClick={handleGameAction}
+                className="w-12 h-12 md:w-auto md:px-8 bg-white/5 hover:bg-primary rounded-2xl flex items-center justify-center gap-2 transition-all border border-white/5 group/btn"
+              >
                 <span className="hidden md:block text-[10px] font-black uppercase tracking-[0.2em] group-hover/btn:text-white">{game.type === "Tourney" ? "Check Lobby" : "Play Room"}</span>
                 <ChevronRight size={18} className="group-hover/btn:translate-x-1 transition-all" />
               </Link>

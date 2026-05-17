@@ -27,13 +27,17 @@ const TASKS = [
 ];
 
 export function TasksView() {
-  const { user, updateTickets } = useAuth();
+  const { user, updateTickets, setShowAuthModal } = useAuth();
   const [tasks, setTasks] = useState(TASKS);
   const [referralCount, setReferralCount] = useState(1);
   const [showToast, setShowToast] = useState(false);
   const [toastMsg, setToastMsg] = useState("");
 
   const handleTaskComplete = (taskId: number, reward: number) => {
+    if (!user) {
+      setShowAuthModal(true);
+      return;
+    }
     setTasks(prev => prev.map(t => t.id === taskId ? { ...t, completed: true } : t));
     updateTickets(reward);
     setToastMsg(`+${reward} Ticket Earned!`);
@@ -42,6 +46,10 @@ export function TasksView() {
   };
 
   const handleSyncReferrals = () => {
+    if (!user) {
+      setShowAuthModal(true);
+      return;
+    }
     setReferralCount(prev => prev + 1);
     updateTickets(1);
     setToastMsg("+1 Ticket for new referral!");
@@ -49,7 +57,7 @@ export function TasksView() {
     setTimeout(() => setShowToast(false), 3000);
   };
 
-  if (!user) {
+  if (false) { // Keep view functional but prompt for login on action
     return (
       <div className="pt-32 px-4 max-w-md mx-auto text-center space-y-6 bg-black min-h-screen">
         <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mx-auto opacity-20">

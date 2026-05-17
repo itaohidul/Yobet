@@ -15,12 +15,15 @@ interface AuthContextType {
   updateBalance: (amount: number) => void;
   updateDiamonds: (amount: number) => void;
   updateTickets: (amount: number) => void;
+  showAuthModal: boolean;
+  setShowAuthModal: (show: boolean) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
+  const [showAuthModal, setShowAuthModal] = useState(false);
 
   useEffect(() => {
     const savedUser = localStorage.getItem('yopoker_user');
@@ -39,6 +42,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
     setUser(newUser);
     localStorage.setItem('yopoker_user', JSON.stringify(newUser));
+    setShowAuthModal(false);
   };
 
   const logout = () => {
@@ -72,7 +76,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, updateBalance, updateDiamonds, updateTickets }}>
+    <AuthContext.Provider value={{ 
+      user, 
+      login, 
+      logout, 
+      updateBalance, 
+      updateDiamonds, 
+      updateTickets,
+      showAuthModal,
+      setShowAuthModal
+    }}>
       {children}
     </AuthContext.Provider>
   );

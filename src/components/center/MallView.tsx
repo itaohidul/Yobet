@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { ShoppingBag, Star, Zap, Gift, Shield, ChevronRight, Search, Diamond, Crown, Ticket } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/src/lib/utils";
+import { useAuth } from "@/src/lib/AuthContext";
 
 const CATEGORIES = ["ALL", "PRIVILEGE", "TICKET", "THEME", "DECOR"];
 
@@ -16,6 +17,14 @@ const ITEMS = [
 
 export function MallView() {
   const [activeTab, setActiveTab] = useState("ALL");
+  const { user, setShowAuthModal } = useAuth();
+
+  const handleRedeem = () => {
+    if (!user) {
+      setShowAuthModal(true);
+      return;
+    }
+  };
 
   return (
     <div className="pt-24 pb-32 px-4 max-w-7xl mx-auto space-y-8">
@@ -103,7 +112,10 @@ export function MallView() {
                     {item.cost}
                   </div>
                 </div>
-                <button className="px-6 py-3 bg-white/5 hover:bg-primary rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all border border-white/5 group-hover:border-primary/50 group-hover:text-white">
+                <button 
+                  onClick={handleRedeem}
+                  className="px-6 py-3 bg-white/5 hover:bg-primary rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all border border-white/5 group-hover:border-primary/50 group-hover:text-white"
+                >
                   REDEEM
                 </button>
               </div>

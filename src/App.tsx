@@ -48,6 +48,7 @@ const LoginPage = () => <AuthForm mode="login" />;
 const RegisterPage = () => <AuthForm mode="register" />;
 
 import { AuthProvider } from "./lib/AuthContext";
+import { AuthModal } from "./components/auth/AuthModal";
 
 export default function App() {
   return (
@@ -55,6 +56,7 @@ export default function App() {
       <Router>
         <div className="min-h-screen bg-black overflow-x-hidden selection:bg-gold/30 selection:text-gold">
           <Navbar />
+          <AuthModal />
           
           <main>
             <AnimatePresence mode="wait">

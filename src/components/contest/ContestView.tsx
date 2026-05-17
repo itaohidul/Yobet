@@ -23,7 +23,7 @@ import { useAuth } from "@/src/lib/AuthContext";
 import { Link } from "react-router-dom";
 
 export function ContestView() {
-  const { user, updateTickets } = useAuth();
+  const { user, updateTickets, setShowAuthModal } = useAuth();
   const [registered, setRegistered] = useState(false);
   const [showSuccessToast, setShowSuccessToast] = useState(false);
   const [showInsufficientToast, setShowInsufficientToast] = useState(false);
@@ -34,7 +34,10 @@ export function ContestView() {
   const [activeTab, setActiveTab] = useState("hall");
 
   const handleSignUpClick = () => {
-    if (!user) return;
+    if (!user) {
+      setShowAuthModal(true);
+      return;
+    }
     if (user.tickets < 1) {
       setShowInsufficientToast(true);
       setTimeout(() => setShowInsufficientToast(false), 3000);

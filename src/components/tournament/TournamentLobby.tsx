@@ -11,9 +11,10 @@ import {
   Zap,
   Target
 } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/src/lib/utils";
+import { useAuth } from "@/src/lib/AuthContext";
 
 const TOURNAMENTS = [
   {
@@ -64,6 +65,14 @@ const TOURNAMENTS = [
 
 export function TournamentLobby() {
   const [filter, setFilter] = useState("All");
+  const { setShowAuthModal, user } = useAuth();
+
+  const handleJoinClick = (e: React.MouseEvent) => {
+    if (!user) {
+      e.preventDefault();
+      setShowAuthModal(true);
+    }
+  };
 
   return (
     <div className="pt-24 pb-32 px-4 max-w-5xl mx-auto space-y-8">
@@ -180,6 +189,7 @@ export function TournamentLobby() {
                   </div>
                   <Link 
                     to="/contest" 
+                    onClick={handleJoinClick}
                     className="px-8 py-4 bg-white/5 group-hover:bg-primary text-white/40 group-hover:text-white rounded-2xl font-black uppercase italic tracking-tighter text-sm transition-all border border-white/5 group-hover:border-primary flex items-center gap-2"
                   >
                     Join Tournament

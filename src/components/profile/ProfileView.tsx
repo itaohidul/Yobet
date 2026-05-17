@@ -40,7 +40,7 @@ const MENU_ITEMS = [
 ];
 
 export function ProfileView() {
-  const { user, logout } = useAuth();
+  const { user, logout, setShowAuthModal } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -48,15 +48,21 @@ export function ProfileView() {
     navigate('/');
   };
 
-  if (!user) {
+  if (!user) { // Prompt for login but allow viewing generic structure if needed (though profile specifically is personal)
+    // For profile, we still want to block but offer a clear way to login that triggers the modal if they don't want to navigate
     return (
-      <div className="pt-32 px-4 max-w-md mx-auto text-center space-y-6">
+      <div className="pt-32 px-4 max-w-md mx-auto text-center space-y-6 min-h-[80vh] flex flex-col justify-center">
         <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mx-auto opacity-20">
-          <User size={40} />
+          <User size={40} className="text-primary" />
         </div>
-        <h2 className="text-2xl font-display font-black uppercase italic tracking-tighter text-white">NOT SIGNED IN</h2>
-        <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest leading-relaxed">Sign in to view your profile, track stats, and manage rewards</p>
-        <Link to="/login" className="block w-full bg-primary text-white py-5 rounded-[28px] font-black uppercase italic tracking-tighter text-lg shadow-[0_10px_30px_rgba(143,52,255,0.4)] hover:scale-[1.02] active:scale-95 transition-all">Sign In Now</Link>
+        <h2 className="text-2xl font-display font-black uppercase italic tracking-tighter text-white">PROFILE PROTECTED</h2>
+        <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest leading-relaxed">Sign in to track your poker stats and manage your assets</p>
+        <button 
+          onClick={() => setShowAuthModal(true)}
+          className="block w-full bg-primary text-white py-5 rounded-[28px] font-black uppercase italic tracking-tighter text-lg shadow-[0_10px_30px_rgba(143,52,255,0.4)] hover:scale-[1.02] active:scale-95 transition-all"
+        >
+          Sign In Now
+        </button>
       </div>
     );
   }

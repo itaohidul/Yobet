@@ -23,17 +23,29 @@ const TRANSACTIONS = [
 ];
 
 export function WalletView() {
-  const { user } = useAuth();
+  const { user, setShowAuthModal } = useAuth();
+
+  const handleWalletAction = () => {
+    if (!user) {
+      setShowAuthModal(true);
+      return;
+    }
+  };
 
   if (!user) {
     return (
-      <div className="pt-32 px-4 max-w-md mx-auto text-center space-y-6">
+      <div className="pt-32 px-4 max-w-md mx-auto text-center space-y-6 min-h-[80vh] flex flex-col justify-center">
         <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mx-auto opacity-20">
-          <Wallet size={40} />
+          <Wallet size={40} className="text-primary" />
         </div>
         <h2 className="text-2xl font-display font-black uppercase italic tracking-tighter text-white">WALLET SECURED</h2>
-        <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest leading-relaxed">Sign in to access your pro wallet, manage funds, and view game assets</p>
-        <Link to="/login" className="block w-full bg-primary text-white py-5 rounded-[28px] font-black uppercase italic tracking-tighter text-lg shadow-[0_10px_30px_rgba(143,52,255,0.4)] hover:scale-[1.02] active:scale-95 transition-all">Unlock Wallet</Link>
+        <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest leading-relaxed">Sign in to access your pro wallet and manage game assets</p>
+        <button 
+          onClick={() => setShowAuthModal(true)}
+          className="block w-full bg-primary text-white py-5 rounded-[28px] font-black uppercase italic tracking-tighter text-lg shadow-[0_10px_30px_rgba(143,52,255,0.4)] hover:scale-[1.02] active:scale-95 transition-all"
+        >
+          Unlock Wallet
+        </button>
       </div>
     );
   }
