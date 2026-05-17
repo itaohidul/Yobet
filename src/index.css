@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", sans-serif;
+
+  --color-primary: #8f34ff;
+  --color-primary-muted: rgba(143, 52, 255, 0.2);
+  --color-card: #121212;
+  --color-card-hover: #1A1A1A;
+  --color-surface: #0A0A0A;
+
+  --animate-shimmer: shimmer 2s linear infinite;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight text-white;
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+.glass {
+  background-color: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.premium-gradient {
+  background: linear-gradient(135deg, rgba(143, 52, 255, 0.2) 0%, transparent 50%, rgba(143, 52, 255, 0.05) 100%);
+}
+
+.primary-gradient {
+  background: linear-gradient(to right, #8f34ff, #bd68ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nav-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
