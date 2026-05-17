@@ -66,31 +66,31 @@ export function ContestView() {
   return (
     <div className="min-h-screen bg-black pb-32">
       {/* Header */}
-      <div className="fixed top-0 left-0 right-0 h-16 glass z-50 flex items-center px-4 border-b border-white/5">
+      <div className="fixed top-0 left-0 right-0 h-16 pt-safe glass z-50 flex items-center px-4 border-b border-white/5">
         <Link to="/" className="flex items-center gap-1 text-white/60 hover:text-white transition-colors">
           <ChevronLeft size={20} />
-          <span className="text-sm font-bold uppercase tracking-widest">return</span>
+          <span className="text-[10px] font-bold uppercase tracking-widest hidden md:inline">return</span>
         </Link>
-        <div className="absolute left-1/2 -translate-x-1/2 font-display font-black uppercase text-sm tracking-[0.2em]">Match Details</div>
+        <div className="absolute left-1/2 -translate-x-1/2 font-display font-black uppercase text-[10px] md:text-sm tracking-[0.2em] whitespace-nowrap">Match Details</div>
       </div>
 
-      <div className="pt-20 px-4 max-w-lg mx-auto space-y-6">
+      <div className="pt-24 px-4 max-w-lg mx-auto space-y-6">
         {/* Banner Title */}
-        <div className="bg-[#00FF00] text-black py-4 px-6 rounded-xl text-center font-bold text-lg leading-tight uppercase">
+        <div className="bg-[#00FF00] text-black py-4 px-6 rounded-2xl text-center font-bold text-sm md:text-lg leading-tight uppercase shadow-[0_0_20px_rgba(0,255,0,0.15)]">
           China-Tui Friendship Tournament Day 1
         </div>
 
         {/* Blind Level & Timer */}
         <div className="text-center space-y-4">
-          <div className="text-white font-bold text-xl flex items-center justify-center gap-2">
+          <div className="text-white font-bold text-lg md:text-xl flex items-center justify-center gap-2">
             Current blind level <span className="text-[#00FF00]">1</span>
           </div>
           
-          <div className="bg-white/10 rounded-[60px] py-12 px-8 inline-block w-full border border-white/5 relative overflow-hidden">
-            <div className="text-7xl font-mono font-black tracking-tighter text-white">11:27:23</div>
+          <div className="bg-white/10 rounded-[40px] md:rounded-[60px] py-10 md:py-12 px-8 inline-block w-full border border-white/5 relative overflow-hidden">
+            <div className="text-5xl md:text-7xl font-mono font-black tracking-tighter text-white">11:27:23</div>
           </div>
 
-          <div className="text-white/40 font-mono font-bold">2026-05-18 12:00</div>
+          <div className="text-white/40 font-mono font-bold text-xs">2026-05-18 12:00</div>
         </div>
 
         {/* Stats Row */}

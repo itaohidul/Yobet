@@ -71,14 +71,14 @@ export function TasksView() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden pb-32">
+    <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden pb-40">
       {/* Top Banner Section */}
-      <div className="relative h-[320px] md:h-[480px] w-full overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black z-10" />
+      <div className="relative h-[280px] md:h-[480px] w-full overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black z-10" />
         <div className="absolute inset-0 flex items-center justify-center">
            {/* Trophy Graphic Container */}
-           <div className="relative w-full h-full flex items-center justify-center scale-90 md:scale-100">
-              <div className="absolute w-[200px] md:w-[400px] h-[200px] md:h-[400px] bg-[#00FF00]/10 blur-[100px] rounded-full" />
+           <div className="relative w-full h-full flex items-center justify-center scale-[0.8] md:scale-100">
+              <div className="absolute w-[180px] md:w-[400px] h-[180px] md:h-[400px] bg-[#00FF00]/10 blur-[80px] rounded-full" />
               <div className="relative z-20 flex flex-col items-center">
                  <motion.div
                    initial={{ y: 20, opacity: 0 }}
@@ -114,16 +114,16 @@ export function TasksView() {
         <ChevronLeft size={20} />
       </Link>
 
-      <div className="px-4 max-w-2xl mx-auto -mt-8 md:-mt-16 relative z-20 space-y-10">
+      <div className="px-4 max-w-2xl mx-auto -mt-4 md:-mt-16 relative z-20 space-y-8">
         {/* Main Stats */}
-        <div className="grid grid-cols-2 gap-4">
-          <div className="glass p-6 rounded-[32px] text-center border-white/5 bg-white/[0.02]">
+        <div className="grid grid-cols-2 gap-3 md:gap-4 font-display">
+          <div className="glass p-5 md:p-6 rounded-[28px] md:rounded-[32px] text-center border-white/5 bg-white/[0.04]">
             <div className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2">Current Prize Pool</div>
-            <div className="text-3xl font-display font-black text-[#D4AF37]">$179</div>
+            <div className="text-3xl md:text-4xl font-black text-[#D4AF37]">$179</div>
           </div>
-          <div className="glass p-6 rounded-[32px] text-center border-white/5 bg-white/[0.02]">
+          <div className="glass p-5 md:p-6 rounded-[28px] md:rounded-[32px] text-center border-white/5 bg-white/[0.04]">
             <div className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2">Starts In</div>
-            <div className="text-xl font-mono font-black text-[#00FF00]">00D 11H 44M</div>
+            <div className="text-xl md:text-2xl font-mono font-black text-[#00FF00]">11H 44M 38S</div>
           </div>
         </div>
 
@@ -144,18 +144,18 @@ export function TasksView() {
         {/* Activity Rules */}
         <section className="space-y-4">
           <div className="text-center">
-            <h2 className="text-[#00FF00] text-sm font-black uppercase tracking-[0.3em]">Activity Rules</h2>
+            <h2 className="text-[#00FF00] text-xs md:text-sm font-black uppercase tracking-[0.3em]">Activity Rules</h2>
           </div>
           <div className="grid grid-cols-2 gap-3">
              {[
                { label: "Starting Chips", val: "20,000" },
-               { label: "Blinds", val: "Every 20 Mins" },
+               { label: "Blinds", val: "20 Mins" },
                { label: "Re-entry", val: "1 Time" },
-               { label: "Payout", val: "Top 10% Pool" }
+               { label: "Payout", val: "Top 10%" }
              ].map((rule, i) => (
-               <div key={i} className="glass p-4 rounded-2xl border-white/5 bg-white/[0.02]">
-                 <div className="text-[8px] font-bold text-white/20 uppercase tracking-widest mb-1">{rule.label}</div>
-                 <div className="text-xs font-black uppercase text-white/80">{rule.val}</div>
+               <div key={i} className="glass p-3 md:p-4 rounded-2xl border-white/5 bg-white/[0.02]">
+                 <div className="text-[7px] md:text-[8px] font-bold text-white/20 uppercase tracking-tighter mb-1">{rule.label}</div>
+                 <div className="text-[10px] md:text-xs font-black uppercase text-white/80">{rule.val}</div>
                </div>
              ))}
           </div>

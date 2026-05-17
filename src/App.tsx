@@ -33,25 +33,25 @@ const HomeView = () => (
     <Hero />
     
     {/* Featured Event Banner */}
-    <div className="max-w-7xl mx-auto px-4 mt-[-20px] mb-12 relative z-30">
+    <div className="max-w-7xl mx-auto px-4 mt-[-10px] md:mt-[-20px] mb-12 relative z-30">
       <Link to="/tasks" className="block group">
-        <div className="glass p-6 md:p-8 rounded-[40px] border-primary/20 bg-primary/5 flex flex-col md:flex-row items-center justify-between gap-6 hover:bg-primary/10 transition-all overflow-hidden relative">
-          <div className="absolute top-0 right-[10%] opacity-5 group-hover:scale-110 transition-transform">
+        <div className="glass p-5 md:p-8 rounded-[32px] md:rounded-[40px] border-primary/20 bg-primary/5 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 hover:bg-primary/10 transition-all overflow-hidden relative">
+          <div className="absolute top-0 right-[5%] md:right-[10%] opacity-5 group-hover:scale-110 transition-transform">
              <Trophy size={160} />
           </div>
-          <div className="flex items-center gap-6 relative z-10 w-full md:w-auto">
-             <div className="w-16 h-16 md:w-20 md:h-20 bg-primary/20 rounded-[32px] flex items-center justify-center text-primary shadow-[0_0_30px_rgba(143,52,255,0.2)]">
-                <Trophy size={32} md:size={40} />
+          <div className="flex items-center gap-4 md:gap-6 relative z-10 w-full md:w-auto">
+             <div className="w-14 h-14 md:w-20 md:h-20 bg-primary/20 rounded-[24px] md:rounded-[32px] flex items-center justify-center text-primary shadow-[0_0_30px_rgba(143,52,255,0.2)]">
+                <Trophy size={28} md:size={40} />
              </div>
-             <div>
-                <div className="text-[10px] md:text-xs font-black text-primary uppercase tracking-[0.3em] mb-1">Featured Event</div>
-                <h3 className="text-2xl md:text-3xl font-display font-black uppercase italic italic tracking-tighter text-white">YoPoker Friendship Series</h3>
-                <p className="text-white/40 text-[10px] md:text-xs font-bold uppercase mt-1 tracking-widest">$10,000 Prize Pool • Daily 14:00 Start</p>
+             <div className="flex-1">
+                <div className="text-[9px] md:text-xs font-black text-primary uppercase tracking-[0.3em] mb-0.5 md:mb-1">Featured Event</div>
+                <h3 className="text-xl md:text-3xl font-display font-black uppercase italic tracking-tighter text-white leading-tight">YoPoker Friendship Series</h3>
+                <p className="text-white/40 text-[9px] md:text-xs font-bold uppercase mt-1 tracking-widest">$10,000 Prize Pool • Daily 14:00 Start</p>
              </div>
           </div>
           <div className="w-full md:w-auto relative z-10">
-            <div className="flex items-center justify-center gap-3 bg-[#00FF00] text-black px-8 py-4 rounded-full font-black uppercase italic tracking-tighter text-sm shadow-[0_10px_30px_rgba(0,255,0,0.2)] group-hover:scale-105 transition-all w-full">
-              Join Activity Center <ArrowRight size={18} />
+            <div className="flex items-center justify-center gap-2 bg-[#00FF00] text-black px-6 md:px-8 py-3.5 md:py-4 rounded-2xl md:rounded-full font-black uppercase italic tracking-tighter text-xs md:text-sm shadow-[0_10px_30px_rgba(0,255,0,0.2)] group-hover:scale-105 transition-all w-full">
+              Join Activity Center <ArrowRight size={16} md:size={18} />
             </div>
           </div>
         </div>

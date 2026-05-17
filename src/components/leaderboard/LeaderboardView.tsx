@@ -67,8 +67,8 @@ export function LeaderboardView() {
         </div>
 
         {/* List View */}
-        <div className="lg:col-span-3 glass rounded-[40px] overflow-hidden border-white/5">
-          <div className="grid grid-cols-[80px_1fr_1fr_1fr_1fr] px-8 py-6 text-white/20 text-[10px] font-bold uppercase tracking-[0.2em] border-b border-white/5 bg-white/[0.02]">
+        <div className="lg:col-span-3 glass rounded-[32px] md:rounded-[40px] overflow-hidden border-white/5">
+          <div className="grid grid-cols-[60px_1fr_80px] md:grid-cols-[80px_1fr_1fr_1fr_1fr] px-6 md:px-8 py-6 text-white/20 text-[10px] font-bold uppercase tracking-[0.2em] border-b border-white/5 bg-white/[0.02]">
             <span>Rank</span>
             <span>Player</span>
             <span className="hidden md:block">Lifetime Wins</span>
@@ -77,18 +77,18 @@ export function LeaderboardView() {
           </div>
           <div className="divide-y divide-white/5">
             {PLAYERS.map((player) => (
-              <div key={player.rank} className="grid grid-cols-[80px_1fr_minmax(100px,1fr)_minmax(100px,1fr)_minmax(100px,1fr)] px-8 py-6 items-center hover:bg-white/[0.02] transition-colors group">
-                <span className="font-display font-bold text-lg text-white/40 group-hover:text-gold transition-colors italic">#{player.rank}</span>
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-xs font-bold text-white/60">
+              <div key={player.rank} className="grid grid-cols-[60px_1fr_80px] md:grid-cols-[80px_1fr_minmax(100px,1fr)_minmax(100px,1fr)_minmax(100px,1fr)] px-6 md:px-8 py-6 items-center hover:bg-white/[0.02] transition-colors group">
+                <span className="font-display font-bold text-base md:text-lg text-white/40 group-hover:text-gold transition-colors italic">#{player.rank}</span>
+                <div className="flex items-center gap-3 md:gap-4 overflow-hidden">
+                  <div className="w-8 h-8 md:w-10 md:h-10 bg-white/5 rounded-xl flex items-center justify-center text-[10px] md:text-xs font-bold text-white/60 flex-shrink-0">
                     {player.avatar}
                   </div>
-                  <span className="font-bold text-sm uppercase tracking-tight">{player.name}</span>
+                  <span className="font-bold text-xs md:text-sm uppercase tracking-tight truncate">{player.name}</span>
                 </div>
                 <span className="hidden md:block font-mono text-xs font-bold text-white/60">{player.winnings}</span>
                 <span className="hidden md:block font-mono text-xs font-bold text-green-500/80">68.4%</span>
                 <div className="text-right">
-                  <button className="text-[10px] font-bold uppercase tracking-widest text-gold hover:underline">View Profile</button>
+                  <button className="text-[10px] font-bold uppercase tracking-widest text-gold hover:underline">View</button>
                 </div>
               </div>
             ))}
